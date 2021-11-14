@@ -1,9 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../colors.dart';
 
 Widget tabSection(BuildContext context) {
+  const htmlData = r"""
+<div>तुळशी वाहू विष्णूला गणपतीला दुर्वा<br />शंकराच्या पिंडी वरती बेल शोभे हिरवा || धृ ||<br /><br />शंकराचे पूजन करिता वर लाभे तुला ||१||<br /><br />लक्ष्मीचे पूजन करिता धन लाभे तुला ||२||<br /><br />सरस्वतीचे पूजन करता विद्या लाभे तुला ||३||<br /><br />गणपतीचे पूजन करिता बुद्धी लाभे तुला ||४||<br /></div>
+""";
+
   return DefaultTabController(
     length: 7,
     child: Column(
@@ -23,48 +29,55 @@ Widget tabSection(BuildContext context) {
                   indicatorColor: Colors.yellow,
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorWeight: 5,
-                  labelStyle: TextStyle(fontWeight: FontWeight.w800),
+                  labelStyle: TextStyle(fontWeight: FontWeight.w600),
                   tabs: [
                     Tab(
                       child: Text(
                         "प्रार्थना",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: GoogleFonts.notoSans(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                     Tab(
                       child: Text(
                         "भजन",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: GoogleFonts.notoSans(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                     Tab(
                       child: Text(
                         "रूपावली",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: GoogleFonts.notoSans(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                     Tab(
                       child: Text(
                         "गजर",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: GoogleFonts.notoSans(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                     Tab(
                       child: Text(
                         "अभंग",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: GoogleFonts.notoSans(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                     Tab(
                       child: Text(
                         "गवळण",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: GoogleFonts.notoSans(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                     Tab(
                       child: Text(
                         "extra",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        style: GoogleFonts.notoSans(
+                            fontSize: 18, color: Colors.black),
                       ),
                     ),
                   ]),
@@ -85,7 +98,8 @@ Widget tabSection(BuildContext context) {
                         itemCount: 10,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
-                              leading:  Image.asset('assets/images/Selected.png'),
+                              leading:
+                                  Image.asset('assets/images/Selected.png'),
                               title: Text("List item $index"));
                         }),
                   ],
@@ -103,7 +117,17 @@ Widget tabSection(BuildContext context) {
                 child: Column(
                   children: [
                     Divider(color: Colors.black),
-                    Text("Home Body"),
+                    SingleChildScrollView(
+                      child: Container(
+                        // color: Colors.yellowAccent,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Html(
+                            data: htmlData,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
